@@ -1,0 +1,3 @@
+C:/Users/Harriett/Downloads/Proyecto02/Proyecto02/cmake-build-debug/CMakeFiles/Proyecto02.dir
+C:/Users/Harriett/Downloads/Proyecto02/Proyecto02/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Harriett/Downloads/Proyecto02/Proyecto02/cmake-build-debug/CMakeFiles/rebuild_cache.dir

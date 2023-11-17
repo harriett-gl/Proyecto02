@@ -1,0 +1,11 @@
+# ninja log v5
+0	1477	1700234955150227694	CMakeFiles/Proyecto02.dir/main.cpp.o	33881a99d6517bd7
+6	1737	1700235171055821520	CMakeFiles/Proyecto02.dir/Hash.cpp.o	8896b5769f1e9c1b
+8	1740	1700235171058090116	CMakeFiles/Proyecto02.dir/Data.cpp.o	544f7f78a7a50808
+8	1764	1700235171084851560	CMakeFiles/Proyecto02.dir/Nodo.cpp.o	612101172689b1c
+5	1929	1700235171251063073	CMakeFiles/Proyecto02.dir/main.cpp.o	33881a99d6517bd7
+5	900	1700235303381508405	CMakeFiles/Proyecto02.dir/DobleLista.cpp.o	6b3d9bf2b95e5e47
+5	906	1700235721417165522	CMakeFiles/Proyecto02.dir/Hash.cpp.o	8896b5769f1e9c1b
+5	1150	1700235721659260946	CMakeFiles/Proyecto02.dir/main.cpp.o	33881a99d6517bd7
+5	893	1700235742600200236	CMakeFiles/Proyecto02.dir/DobleLista.cpp.o	6b3d9bf2b95e5e47
+893	998	1700235742708842366	Proyecto02	9426f20cc2ebd4ad
