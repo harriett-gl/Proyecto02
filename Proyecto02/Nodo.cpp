@@ -4,8 +4,8 @@
 
 #include "Nodo.h"
 
-Nodo::Nodo() : siguiente(nullptr), anterior(nullptr) {}
+Nodo::Nodo() {}
 
 Nodo::Nodo(const Data& datitos) : datos(datitos), siguiente(nullptr), anterior(nullptr) {}
 
-Nodo::Nodo(const std::vector<std::string>& Cadenas) : Cadenas(Cadenas), siguiente(nullptr), anterior(nullptr) {}
+Nodo::Nodo(const std::vector<std::string>& stringCadenas) : stringCadenas(stringCadenas), siguiente(nullptr), anterior(nullptr) {}

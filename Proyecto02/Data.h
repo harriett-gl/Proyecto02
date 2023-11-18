@@ -15,7 +15,7 @@ public:
     Data(): claveHasheada(""), restoDeLinea("") {}
     Data(const std::string& claveHasheada, const std::string& restoDeLinea);
 
-    bool operator<(const Data& other) const;
+    bool operator<(const Data& otro) const;
 };
 
 #endif //PROYECTO02_DATA_H
