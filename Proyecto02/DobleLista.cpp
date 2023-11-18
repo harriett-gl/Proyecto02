@@ -36,39 +36,35 @@ void DobleLista::busquedaBinaria(std::string valor) {
     int alto = tamano - 1;
     bool encontrado = false;
 
+    int medio = bajo + (alto - bajo) / 2;
+    Nodo* actual = inicio;
+    for (int i = 0; i < medio; i++) {
+        actual = actual->siguiente;
+    }
+
+    Nodo*Izquierdo = actual;
+    Nodo*Derecho = actual->siguiente;
+
     while (bajo <= alto) {
-        int medio = bajo + (alto - bajo) / 2;
-        Nodo* actual = inicio;
-        for (int i = 0; i < medio; i++) {
-            actual = actual->siguiente;
-        }
-
-        if (actual->datos.claveHasheada == valor) {
+        if (Izquierdo->datos.claveHasheada == valor) {
             encontrado = true;
-            std::cout << "Encontrado: " << actual->datos.restoDeLinea << std::endl;
-
-            Nodo* izquierda = actual->anterior;
-            while (izquierda && izquierda->datos.claveHasheada == valor) {
-                std::cout << "Encontrado: " << izquierda->datos.restoDeLinea << std::endl;
-                izquierda = izquierda->anterior;
-            }
-
-            Nodo* derecha = actual->siguiente;
-            while (derecha && derecha->datos.claveHasheada == valor) {
-                std::cout << "Encontrado: " << derecha->datos.restoDeLinea << std::endl;
-                derecha = derecha->siguiente;
-            }
-            break;
-        } else if (actual->datos.claveHasheada < valor) {
-            bajo = medio + 1;
-        } else {
-            alto = medio - 1;
+            std::cout << "Encontrado: " << Izquierdo->datos.restoDeLinea << std::endl;
+            return;
+        }
+        else if (Derecho -> datos.claveHasheada == valor) {
+            encontrado = true;
+            std::cout << "Encontrado: " << Derecho->datos.restoDeLinea << std::endl;
+            return;
+        }
+        else
+        {
+            bajo--;
+            alto++;
+            Izquierdo = Izquierdo -> anterior;
+            Derecho = Derecho -> siguiente;
         }
     }
-
-    if (!encontrado) {
-        std::cout << "No encontrado" << std::endl;
-    }
+    std::cout << "No encontrado" << std::endl;
 }
 
 int DobleLista::tamanoLista() {

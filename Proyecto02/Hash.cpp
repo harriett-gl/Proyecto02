@@ -56,4 +56,3 @@ void Hash::procesarArchivo(const std::string& rutaArchivo, DobleLista* listaHash
 
     archivo.close();
 }
-
