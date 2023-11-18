@@ -7,6 +7,6 @@
 Data::Data(const std::string& claveHasheada, const std::string& restoDeLinea)
         : claveHasheada(claveHasheada), restoDeLinea(restoDeLinea) {}
 
-bool Data::operator<(const Data& otro) const {
+bool Data::esMenor(const Data& otro) const {
     return claveHasheada < otro.claveHasheada;
 }

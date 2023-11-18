@@ -5,12 +5,13 @@
 #include "Hash.h"
 #include "Data.h"
 
+
 Hash::Hash() {
 }
 
 std::string Hash::generarHash(const std::string& clave) {
-    std::hash<std::string> hasher;
-    std::size_t claveHasheada = hasher(clave);
+    std::hash<std::string> hashClave;
+    std::size_t claveHasheada = hashClave(clave);
     return std::to_string(claveHasheada).substr(0, 10);
 }
 
@@ -26,7 +27,7 @@ std::vector<std::string> Hash::convertirAVector(std::string& cadena) {
     return resultado;
 }
 
-void Hash::procesarArch(const std::string& rutaArchivo, DobleLista* listaHash, DobleLista* listaValores) {
+void Hash::procesarArchivo(const std::string& rutaArchivo, DobleLista* listaHash, DobleLista* listaValores) {
     std::ifstream archivo(rutaArchivo);
 
     if (!archivo) {
@@ -36,18 +37,18 @@ void Hash::procesarArch(const std::string& rutaArchivo, DobleLista* listaHash, D
 
     std::string linea;
     while (std::getline(archivo, linea)) {
-        std::istringstream lineaStream(linea);
+        std::istringstream flujoLinea(linea);
         std::string token, clave, restoDeLinea;
 
-        if (std::getline(lineaStream, token, ',')) {
+        if (std::getline(flujoLinea, token, ',')) {
             clave = token;
             restoDeLinea = linea;
         }
 
         std::string claveHasheada = generarHash(clave);
-        Data datos(claveHasheada, restoDeLinea);
+        Data datosLinea(claveHasheada, restoDeLinea);
 
-        listaHash->agregarElemento(datos);
+        listaHash->agregarElemento(datosLinea);
 
         std::vector<std::string> resultado = convertirAVector(restoDeLinea);
         listaValores->agregarVector(resultado);
@@ -55,3 +56,4 @@ void Hash::procesarArch(const std::string& rutaArchivo, DobleLista* listaHash, D
 
     archivo.close();
 }
+

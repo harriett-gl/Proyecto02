@@ -7,10 +7,10 @@
 
 #include "Nodo.h"
 #include "Data.h"
-#include <vector>
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include <algorithm>
 #include <queue>
 #include <fstream>
@@ -22,22 +22,26 @@ class DobleLista {
 private:
     Nodo* inicio;
     Nodo* fin;
-    int tamanio;
+    int tamano;
 
 public:
     DobleLista();
     ~DobleLista();
 
-    void imprimir(); // Función de prueba
-    void busquedaBinaria(std::string value);
+    void imprimir();
+    void busquedaBinaria(std::string valor);
     void limpiarLista();
-    int tamanioDeLista();
-    void agregarElemento(const Data& data);
+    int tamanoLista();
+
+    void agregarElemento(const Data& datos);
     void ordenarListaHash();
 
-    void busquedaBinariaVector(const std::string& value);
-    void imprimirVector();
-    void agregarVector(const std::vector<std::string>& stringArray);
+
+    void agregarVector(const std::vector<std::string>& arregloString);
+    void imprimirListaVector();
+    void busquedaBinariaVector(const std::string& valor);
+
+
 };
 
 #endif //PROYECTO02_DOBLELISTA_H

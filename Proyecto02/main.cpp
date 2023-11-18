@@ -7,83 +7,78 @@
 
 using namespace std;
 
-// Creación de variables en el heap porque se requiere conservar las funciones y listas
 void menuPrincipal();
 DobleLista *listaHash = new DobleLista();
-DobleLista *listaValor = new DobleLista();
-Hash *hashing = new Hash();
+DobleLista *listaValue = new DobleLista();
+Hash *hashear = new Hash();
 
-
-void pruebas(){ // pruebas de las listas
-    listaValor->imprimir();
+void pruebas() {
+    listaValue->imprimirListaVector();
 }
 
-void subirDatos(){ // Función para procesar el archivo y cargar los datos en las listas
-
-    string nombreArch;
-    cout<<"Nombre del Archivo "<<endl;
+void Datos() {
+    string nombreArchivo;
+    cout << "Archivo: " << endl;
     std::cin.ignore();
-    std::getline(std::cin, nombreArch);
-    hashing->procesarArch(nombreArch, listaHash, listaValor);
-    cout<<"Orden "<<endl;
+    std::getline(std::cin, nombreArchivo);
+    hashear->procesarArchivo(nombreArchivo, listaHash, listaValue);
+    cout << "Orden" << endl;
     listaHash->ordenarListaHash();
 
-    cout<<"Tamanio "<<endl;
-    cout<<listaHash->tamanioDeLista()<<endl;
-    cout<<listaValor->tamanioDeLista()<<endl;
+    cout << "Tamanio: " << endl;
+    cout << listaHash->tamanoLista() << endl;
+    cout << listaValue->tamanoLista() << endl;
 
     menuPrincipal();
 }
 
-void Llave(){ // Función para buscar por llave
-    string llave, resultado;
-    cout<<"Llave a buscar "<<endl;
+void Llave() {
+    string key, result;
+    cout << "Ingrese la key que desea buscar: " << endl;
     std::cin.ignore();
-    std::getline(std::cin, llave);
+    std::getline(std::cin, key);
 
-    resultado = hashing->generarHash(llave);
-    listaHash->busquedaBinaria(resultado);
+    result = hashear->generarHash(key);
+    listaHash->busquedaBinaria(result);
     menuPrincipal();
 }
 
-void Valor(){ // Función para buscar por valor
-    string valor, resultado;
-    cout<<"Valor a buscar "<<endl;
+void Valor() {
+    string valor, result;
+    cout << "Ingrese el valor que desea buscar: " << endl;
     std::cin.ignore();
     std::getline(std::cin, valor);
 
-    listaValor->busquedaBinaria(valor);
+    listaValue->busquedaBinariaVector(valor);
     menuPrincipal();
 }
 
-void Salir(){ // Función para salir del programa
-    cout<<"Fin"<<endl;
+void Fin() {
+    cout << "Fin" << endl;
     exit(0);
 }
 
-void menuPrincipal(){ // Función para mostrar el menú principal
-
+void menuPrincipal() {
     int opcion;
     char entrada[100];
 
     cout << "1. Archivo" << endl;
-    cout << "2. Nombre de la llave" << endl;
-    cout << "3. Por valor" << endl;
-    cout << "4. Salir" << endl;
+    cout << "2. Por Llave" << endl;
+    cout << "3. Por Valor" << endl;
+    cout << "4. Fin" << endl;
 
-    cout << "Escoge una opcion: ";
+    cout << "Escoja un opción: ";
     cin >> entrada;
     if (strlen(entrada) > 1 || !isdigit(entrada[0])) {
-        cout << "Ingresa un valor valido." << '\n';
+        cout << "Incorrecto" << '\n';
         cin.clear();
         cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         menuPrincipal();
-    }
-    else {
+    } else {
         opcion = atoi(entrada);
         switch (opcion) {
             case 1:
-                subirDatos();
+                Datos();
                 break;
             case 2:
                 Llave();
@@ -92,10 +87,10 @@ void menuPrincipal(){ // Función para mostrar el menú principal
                 Valor();
                 break;
             case 4:
-                Salir();
+                Fin();
                 break;
             default:
-                cout << "Opción incorrecta." << '\n';
+                cout << "Incorrecto" << '\n';
                 menuPrincipal();
                 break;
         }
@@ -104,7 +99,6 @@ void menuPrincipal(){ // Función para mostrar el menú principal
 
 int main() {
     menuPrincipal();
-
     return 0;
 }
 

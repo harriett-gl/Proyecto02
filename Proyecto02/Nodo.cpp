@@ -3,9 +3,12 @@
 //
 
 #include "Nodo.h"
+#include "Data.h"
 
-Nodo::Nodo() {}
+Nodo::Nodo(){}
 
-Nodo::Nodo(const Data& datitos) : datos(datitos), siguiente(nullptr), anterior(nullptr) {}
+Nodo::Nodo(const Data& nuevosDatos)
+        : datos(nuevosDatos), siguiente(nullptr), anterior(nullptr) {}
 
-Nodo::Nodo(const std::vector<std::string>& stringCadenas) : stringCadenas(stringCadenas), siguiente(nullptr), anterior(nullptr) {}
+Nodo::Nodo(const std::vector<std::string>& arregloString)
+        : arregloString(arregloString), siguiente(nullptr), anterior(nullptr) {}

@@ -3,14 +3,15 @@
 //
 
 #include "DobleLista.h"
-#include "iostream"
+#include "Data.h"
 
-DobleLista::DobleLista() : inicio(nullptr), fin(nullptr), tamanio(0) {} // Constructor
-DobleLista::~DobleLista() { //Destructor
+DobleLista::DobleLista() : inicio(nullptr), fin(nullptr), tamano(0) {}
+
+DobleLista::~DobleLista() {
     limpiarLista();
 }
 
-void DobleLista::limpiarLista() { //Limpiar
+void DobleLista::limpiarLista() {
     Nodo* actual = inicio;
     while (actual) {
         Nodo* siguiente = actual->siguiente;
@@ -19,7 +20,7 @@ void DobleLista::limpiarLista() { //Limpiar
     }
     inicio = nullptr;
     fin = nullptr;
-    tamanio = 0;
+    tamano = 0;
 }
 
 void DobleLista::imprimir() {
@@ -30,9 +31,9 @@ void DobleLista::imprimir() {
     }
 }
 
-void DobleLista::busquedaBinaria(const std::string valor) { //Binaria Hash
+void DobleLista::busquedaBinaria(std::string valor) {
     int bajo = 0;
-    int alto = tamanio - 1;
+    int alto = tamano - 1;
     bool encontrado = false;
 
     while (bajo <= alto) {
@@ -70,12 +71,12 @@ void DobleLista::busquedaBinaria(const std::string valor) { //Binaria Hash
     }
 }
 
-int DobleLista::tamanioDeLista() { //Tamaño
-    return tamanio;
+int DobleLista::tamanoLista() {
+    return tamano;
 }
 
-void DobleLista::agregarElemento(const Data &data) {
-    Nodo* nuevoNodo = new Nodo{data};
+void DobleLista::agregarElemento(const Data& datos) {
+    Nodo* nuevoNodo = new Nodo{datos};
     if (inicio == nullptr) {
         inicio = nuevoNodo;
         fin = nuevoNodo;
@@ -84,13 +85,13 @@ void DobleLista::agregarElemento(const Data &data) {
         fin->siguiente = nuevoNodo;
         fin = nuevoNodo;
     }
-    tamanio++;
+    tamano++;
 }
 
-void DobleLista::ordenarListaHash() { //Ordenar
+void DobleLista::ordenarListaHash() {
     std::vector<Data> elementos;
 
-    while (inicio != nullptr) { //Datos del vector
+    while (inicio != nullptr) {
         elementos.push_back(inicio->datos);
         Nodo* temp = inicio;
         inicio = inicio->siguiente;
@@ -100,17 +101,16 @@ void DobleLista::ordenarListaHash() { //Ordenar
         delete temp;
     }
 
-    std::sort(elementos.begin(), elementos.end()); //Ordenar
-    limpiarLista(); //Limpiar la lista
+    std::sort(elementos.begin(), elementos.end());
+    limpiarLista();
 
-    for (const Data& elemento : elementos) { //Insertar ordenados
+    for (const Data& elemento : elementos) {
         agregarElemento(elemento);
     }
 }
 
-void DobleLista::agregarVector(const std::vector<std::string>& stringArray) { //Vector a la lista
-
-    Nodo *nuevoNodo = new Nodo{stringArray};
+void DobleLista::agregarVector(const std::vector<std::string>& arregloString) {
+    Nodo* nuevoNodo = new Nodo{arregloString};
     if (inicio == nullptr) {
         inicio = nuevoNodo;
         fin = nuevoNodo;
@@ -119,41 +119,39 @@ void DobleLista::agregarVector(const std::vector<std::string>& stringArray) { //
         fin->siguiente = nuevoNodo;
         fin = nuevoNodo;
     }
-    tamanio++;
+    tamano++;
 }
 
-void DobleLista::imprimirVector() { //Imprimir la lista [pruebas]
+void DobleLista::imprimirListaVector() {
     Nodo* actual = inicio;
     while (actual) {
-        for (int i = 0; i < actual->stringCadenas.size(); ++i) {
-            std::cout << actual->stringCadenas[i] << ",";
+        for (int i = 0; i < actual->arregloString.size(); ++i) {
+            std::cout << actual->arregloString[i] << ",";
         }
         std::cout << std::endl;
         actual = actual->siguiente;
     }
 }
 
-void DobleLista::busquedaBinariaVector(const std::string &valor) { //Valor
+void DobleLista::busquedaBinariaVector(const std::string& valor) {
     Nodo* actual = inicio;
     bool encontrado = false;
 
-    while (actual) { //Recorrer
-        if (!actual->stringCadenas.empty()) { //n/a
-            std::vector<std::string>& array = actual->stringCadenas;
+    while (actual) {
+        if (!actual->arregloString.empty()) {
+            std::vector<std::string>& arreglo = actual->arregloString;
+            std::sort(arreglo.begin(), arreglo.end());
 
-            // Ordenar el vector
-            std::sort(array.begin(), array.end());
-
-            // Buscar el valor en el vector ordenado
-            if (std::binary_search(array.begin(), array.end(), valor)) {
+            if (std::binary_search(arreglo.begin(), arreglo.end(), valor)) {
                 encontrado = true;
                 std::cout << "Vector completo: ";
-                for (const auto& elemento : array) {
+                for (const auto& elemento : arreglo) {
                     std::cout << elemento << " ";
                 }
                 std::cout << std::endl;
             }
         }
+
         actual = actual->siguiente;
     }
 
@@ -161,4 +159,3 @@ void DobleLista::busquedaBinariaVector(const std::string &valor) { //Valor
         std::cout << "Valor no encontrado." << std::endl;
     }
 }
-
